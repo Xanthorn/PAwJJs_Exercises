@@ -1,0 +1,64 @@
+html {
+    background-color:wheat;
+}
+
+header {
+    margin: 0;
+}
+
+body {
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    border-style: hidden hidden solid hidden;
+    border-color:maroon;
+    background:darksalmon;
+    
+}
+
+.navbar-logo {
+    grid-column: 1 / 3;
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+    color: maroon;
+}
+
+.navbar-items {
+    grid-column: 4 / 12;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-item {
+    display: inline;
+    float: left;
+    margin-right: 5%;
+    font-size: 150%;
+    line-height: 300%;
+    justify-content: middle;
+}
+
+.navbar-item a:link {
+    color: brown;
+    text-decoration: none;
+}
+
+.navbar-item a:visited {
+    color: brown;
+    text-decoration: none;
+}
+
+.navbar-item a:hover {
+    color: maroon;
+    text-decoration: none;
+}
+
+main {
+    grid-column: 4 / 12;
+    height: 100vh;
+    background-color: white;
+}
