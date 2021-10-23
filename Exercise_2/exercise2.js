@@ -102,3 +102,20 @@ function exercise2_3c() {
 
     exercise2_3_printAll();
 }
+
+function exercise2_3d() {
+    if(exercise2_3_array.length === 0) {
+        exercise2_3_printEmptyArray();
+        return;
+    }
+
+    numberOfAppearances = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    for(let i = 0; i < exercise2_3_array.length; i++) {
+        numberOfAppearances[exercise2_3_array[i] - 1]++;
+    }
+
+    for(let i = 0; i < numberOfAppearances.length; i++) {
+        console.log(`The value ${i + 1} has appeared ${numberOfAppearances[i]} times.`);
+    }
+}
