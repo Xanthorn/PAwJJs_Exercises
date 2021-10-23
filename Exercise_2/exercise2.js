@@ -43,7 +43,7 @@ function exercise2_3a() {
     min = Math.ceil(1);
     max = Math.floor(10);
     while (exercise2_3_sum < 200) {
-        number = Math.floor(Math.random() * (max - min)) + min;
+        number = Math.floor(Math.random() * (max - min + 1)) + min;
         exercise2_3_sum += number;
         exercise2_3_array.push(number);
     }
