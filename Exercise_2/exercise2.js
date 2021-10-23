@@ -1,5 +1,4 @@
 let exercise2_3_array = [];
-let exercise2_3_sum = 0;
 
 function exercise2_1() {
     let output = '';
@@ -27,11 +26,15 @@ function exercise2_2() {
     circumference = Math.round(2 * Math.PI * radius * 100) / 100;    // round() round the number to integer so if you want to get 2 places after comma then 
     surfaceArea = Math.round(Math.PI * radius * radius * 100) / 100; // you need to multiply by 100 and then divide by 100
 
-    console.log(`The circumference is equal to: ${circumference} and surface area is equal to: ${surfaceArea}`);
+    console.log(`The circumference is equal to: ${circumference} and surface area is equal to: ${surfaceArea}.`);
 }
 
 function exercise2_3_printAll() {
     console.log(exercise2_3_array);
+}
+
+function exercise2_3_emptyArray() {
+    console.log("First you need to fill in the array.");
 }
 
 function exercise2_3a() {
@@ -45,5 +48,31 @@ function exercise2_3a() {
         exercise2_3_array.push(number);
     }
     
+    exercise2_3_printAll();
+}
+
+function exercise2_3b() {
+    if(exercise2_3_array.length === 0) {
+        exercise2_3_emptyArray();
+        return;
+    }
+
+    smallestValue = Number.MAX_SAFE_INTEGER;
+    smallestValueIndex = 0;
+
+    for (let i = 0; i < exercise2_3_array.length; i++) {
+        if (exercise2_3_array[i] < 0) {
+            smallestValue = exercise2_3_array[i];
+            smallestValueIndex = i;
+            if (smallestValue === 1) {
+                break;
+            }
+        }
+    }
+
+    exercise2_3_array.splice(smallestValueIndex, 1);
+
+    console.log(`The smallest value was: ${smallestValue}, it appeared for the first time under the ${smallestValueIndex} index.`);
+
     exercise2_3_printAll();
 }
