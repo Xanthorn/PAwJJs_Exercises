@@ -119,3 +119,16 @@ function exercise2_3d() {
         console.log(`The value ${i + 1} has appeared ${numberOfAppearances[i]} times.`);
     }
 }
+
+function exercise2_3e() {
+    if(exercise2_3_array.length === 0) {
+        exercise2_3_printEmptyArray();
+        return;
+    }
+
+    cutValues = exercise2_3_array.splice(0, 10);
+
+    exercise2_3_array = exercise2_3_array.concat(cutValues);
+
+    exercise2_3_printAll();
+}
