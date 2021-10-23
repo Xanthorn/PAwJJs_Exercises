@@ -33,7 +33,7 @@ function exercise2_3_printAll() {
     console.log(exercise2_3_array);
 }
 
-function exercise2_3_emptyArray() {
+function exercise2_3_printEmptyArray() {
     console.log("First you need to fill in the array.");
 }
 
@@ -53,7 +53,7 @@ function exercise2_3a() {
 
 function exercise2_3b() {
     if(exercise2_3_array.length === 0) {
-        exercise2_3_emptyArray();
+        exercise2_3_printEmptyArray();
         return;
     }
 
@@ -61,7 +61,7 @@ function exercise2_3b() {
     smallestValueIndex = 0;
 
     for (let i = 0; i < exercise2_3_array.length; i++) {
-        if (exercise2_3_array[i] < 0) {
+        if (exercise2_3_array[i] < smallestValue) {
             smallestValue = exercise2_3_array[i];
             smallestValueIndex = i;
             if (smallestValue === 1) {
@@ -73,6 +73,32 @@ function exercise2_3b() {
     exercise2_3_array.splice(smallestValueIndex, 1);
 
     console.log(`The smallest value was: ${smallestValue}, it appeared for the first time under the ${smallestValueIndex} index.`);
+
+    exercise2_3_printAll();
+}
+
+function exercise2_3c() {
+    if(exercise2_3_array.length === 0) {
+        exercise2_3_printEmptyArray();
+        return;
+    }
+
+    biggestValue = Number.MIN_SAFE_INTEGER;
+    biggestValueIndex = 0;
+
+    for (let i = 0; i < exercise2_3_array.length; i++) {
+        if (exercise2_3_array[i] > biggestValue) {
+            biggestValue = exercise2_3_array[i];
+            biggestValueIndex = i;
+            if (biggestValue === 9) {
+                break;
+            }
+        }
+    }
+
+    exercise2_3_array.splice(biggestValueIndex, 1);
+
+    console.log(`The biggest value was: ${biggestValue}, it appeared for the first time under the ${biggestValueIndex} index.`);
 
     exercise2_3_printAll();
 }
