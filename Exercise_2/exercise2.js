@@ -1,5 +1,3 @@
-let exercise2_3_array = [];
-
 function exercise2_1() {
     let output = '';
     for(let i = 1; i <= 100; i++) {
@@ -18,6 +16,8 @@ function exercise2_1() {
     console.log(output);
 }
 
+// ----------------------------------------------------------------------------------------------------------------
+
 function exercise2_2() {
     let radius = 0, circumference = 0.0, surfaceArea = 0.0;
 
@@ -28,6 +28,10 @@ function exercise2_2() {
 
     console.log(`The circumference is equal to: ${circumference} and surface area is equal to: ${surfaceArea}.`);
 }
+
+// ----------------------------------------------------------------------------------------------------------------
+
+let exercise2_3_array = [];
 
 function exercise2_3_printAll() {
     console.log(exercise2_3_array);
@@ -133,6 +137,8 @@ function exercise2_3e() {
     exercise2_3_printAll();
 }
 
+// ----------------------------------------------------------------------------------------------------------------
+
 function exercise2_4() {
     names = ["Tadeusz", "Kazimierz", "Weronika", "Ryszard", "Mariusz"];
 
@@ -151,4 +157,55 @@ function exercise2_4() {
     }
 
     console.log(`Names after the changes: ${names}`);
+}
+
+// ----------------------------------------------------------------------------------------------------------------
+
+class ProductPrice {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+};
+
+class ProductQuantity {
+    constructor(name, quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
+};
+
+function exercise2_5() {
+    productsString = "Shampoo, Eggs, Soap, Apples, Bread, Rolls, Ham, Carrots, Rice, Pasta, Toothpaste, Tomatoes";
+
+    products = productsString.split(', ');
+
+    // Price list
+    priceList = [];
+
+    for (let i = 0; i < products.length; i++) {
+        newProductPrice = new ProductPrice(products[i], Math.floor((Math.random() * (1000 - 100 + 1)) + 100) / 100);
+        priceList.push(newProductPrice);
+    }
+
+    console.log(`Price List:`);
+    for (let i = 0; i < priceList.length; i++) {
+        console.log(`Product: ${priceList[i].name}\nPrice: ${priceList[i].price}\n\n`);
+    }
+
+    // Shopping list
+    shoppingList = [];
+    i = priceList.length / 2;
+    j = 0;
+
+    while(i--) {
+        j = Math.floor(Math.random() * priceList.length);
+        shoppingList.push(new ProductQuantity(priceList[j].name, Math.floor(Math.random() * (10 - 1 + 1)) + 1));
+        priceList.splice(j, 1);
+    }
+
+    console.log(`\n\nShopping List:`);
+    for (let i = 0; i < shoppingList.length; i++) {
+        console.log(`Product: ${shoppingList[i].name}\nQuantity: ${shoppingList[i].quantity}\n\n`);
+    }
 }
