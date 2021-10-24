@@ -132,3 +132,23 @@ function exercise2_3e() {
 
     exercise2_3_printAll();
 }
+
+function exercise2_4() {
+    names = ["Tadeusz", "Kazimierz", "Weronika", "Ryszard", "Mariusz"];
+
+    console.log(`Names before the changes: ${names}`);
+
+    for(let i = 0; i < names.length; i++) {
+        names[i] = names[i].replace(/[aA]/, 4);
+        names[i] = names[i].replace(/[eE]/, 3);
+
+        if(names[i].length > 6) {
+            newName = names[i].substring(0, 3); // 
+            newName += "...";
+            newName += names[i].substring(names[i].length - 3, names[i].length);
+            names[i] = newName;
+        }
+    }
+
+    console.log(`Names after the changes: ${names}`);
+}
