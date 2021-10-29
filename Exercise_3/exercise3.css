@@ -1,0 +1,12 @@
+.exercise {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.buttons {
+    display: inline-block;
+}
+
+button {
+    margin: 5px;
+}
