@@ -27,3 +27,27 @@ function createPoint(a, b) {
 }
 
 // ----------------------------------------------------------------------------------------------------------------
+
+exercise3_2_firstValue = 0, exercise3_2_secondValue = 0; 
+
+function exercise3_2a(firstValue, secondValue) {
+    if(firstValue > secondValue) {
+        exercise3_2_firstValue = secondValue;
+        exercise3_2_secondValue = firstValue;
+    } else {
+        exercise3_2_firstValue = firstValue;
+        exercise3_2_secondValue = secondValue;
+    }
+
+    return exercise3_2b(); 
+}
+
+function exercise3_2b() {
+    if (exercise3_2_secondValue >= exercise3_2_firstValue) {
+        return console.log(exercise3_2_secondValue--);
+    }   else {
+        return console.log("Nan");
+    }
+}
+
+// ----------------------------------------------------------------------------------------------------------------
