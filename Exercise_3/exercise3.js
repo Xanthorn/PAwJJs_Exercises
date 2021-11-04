@@ -44,10 +44,18 @@ function exercise3_2a(firstValue, secondValue) {
 
 function exercise3_2b() {
     if (exercise3_2_secondValue >= exercise3_2_firstValue) {
-        return console.log(exercise3_2_secondValue--);
+        return exercise3_2_secondValue--;
     }   else {
-        return console.log("Nan");
+        return "Nan";
     }
 }
 
 // ----------------------------------------------------------------------------------------------------------------
+
+function exercise3_3(text) {
+    textArray = text.split("");
+    return textArray.reduce(function(a, b) {
+        a[b] = a[b] + 1 || 1
+        return a;
+    }, {});
+}
