@@ -33,6 +33,8 @@ class Product {
     }
 }
 
+/////////////////////////////////////////
+
 class ProductsList {
     constructor() {
         this.list = new Array();
@@ -86,6 +88,45 @@ class ProductsList {
     };
 }
 
+/////////////////////////////////////////
+
+class Shop extends ProductsList {
+    constructor() {
+        super();
+    }
+
+    addProductAutoId(name, model, productionYear, price, energyConsumption) {
+        let i = 0;
+        if (this.list.length > 0) {
+            while (true) {
+                if (i !== this.list[i].id) {
+                    break;
+                }
+                i++;
+            }
+        }
+        
+        let newProduct = new Product(i, name, model, productionYear, price, energyConsumption);
+
+        this.list.push(newProduct);
+    }
+
+    addProduct(id, name, model, productionYear, price, energyConsumption) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (id === this.list[i].id) {
+                console.log("Product with given id is already in shop list");
+                return;
+            }
+        }
+        
+        let newProduct = new Product(id, name, model, productionYear, price, energyConsumption);
+
+        this.list.push(newProduct);
+    }
+}
+
+/////////////////////////////////////////
+
 let product = new Product(1, "PC", "Gaming", 2020, 5500, 0.6);
 console.log(product);
 
@@ -94,11 +135,11 @@ console.log(product.EnergyBill);
 console.log(product.AgeOfProduct);
 console.log(product.AgeOfProductInYears);
 
-let productsList = new ProductsList();
-
 /////////////////////////////////////////
 console.log("\n\n");
 /////////////////////////////////////////
+
+let productsList = new ProductsList();
 
 productsList.logAll();
 
@@ -110,3 +151,19 @@ productsList.log(2);
 modifiedProduct = new Product(1, "PC", "Gaming", 2020, 6000, 0.4);
 productsList.modifyProduct(modifiedProduct.id, modifiedProduct);
 productsList.log(1);
+
+/////////////////////////////////////////
+console.log("\n\n");
+/////////////////////////////////////////
+
+let shop = new Shop();
+shop.logAll();
+
+shop.addProductAutoId("Komputer", "Dla graczy", 2021, 4000, 0.5);
+shop.logAll();
+
+shop.addProduct(0, "Smartfon", "Samsung S20", 2020, 2500, 0.1);
+shop.logAll();
+
+shop.addProduct(1, "Smartfon", "Samsung S20", 2020, 2500, 0.1);
+shop.logAll();
