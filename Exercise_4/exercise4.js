@@ -202,6 +202,30 @@ class Warehouse extends ProductsList {
 
 /////////////////////////////////////////
 
+class Order extends Warehouse {
+    constructor() {
+        super();
+        this.orderList = Array();
+    }
+
+    addToOrder(id, quantity) {
+        let orderPosition = this.getProduct(id, quantity);
+
+        if(orderPosition !== null) {
+            this.orderList.push(orderPosition);
+        }
+    }
+
+    finalizeOrder() {
+        for (let i = 0; i < this.orderList.length; i++) {
+            console.log(this.orderList[i].product);
+            console.log(this.orderList[i].quantity);
+        }
+    }
+}
+
+/////////////////////////////////////////
+
 let product = new Product(1, "PC", "Gaming", 2020, 5500, 0.6);
 console.log(product);
 
@@ -266,3 +290,12 @@ warehouse.getProduct(0, 2);
 warehouse.logAll();
 warehouse.log(1);
 
+/////////////////////////////////////////
+console.log("\n\n");
+/////////////////////////////////////////
+
+let order = new Order();
+order.list = warehouse.list;
+
+order.addToOrder(1, 3);
+order.finalizeOrder();
