@@ -33,6 +33,13 @@ class Product {
     }
 }
 
+class ProductQuantity {
+    constructor(product, quantity) {
+        this.product = product;
+        this.quantity = quantity;
+    }
+}
+
 /////////////////////////////////////////
 
 class ProductsList {
@@ -105,7 +112,7 @@ class Shop extends ProductsList {
                 i++;
             }
         }
-        
+
         let newProduct = new Product(i, name, model, productionYear, price, energyConsumption);
 
         this.list.push(newProduct);
@@ -118,10 +125,78 @@ class Shop extends ProductsList {
                 return;
             }
         }
-        
+
         let newProduct = new Product(id, name, model, productionYear, price, energyConsumption);
 
         this.list.push(newProduct);
+    }
+}
+
+/////////////////////////////////////////
+
+class Warehouse extends ProductsList {
+    constructor() {
+        super();
+    }
+
+    log(id) {
+        if (this.list.length === 0) {
+            console.log("The warehouse is empty");
+            return;
+        } else {
+            for (let i = 0; i < this.list.length; i++) {
+                if (this.list[i].product.id === id) {
+                    console.log(this.list[i]);
+                    return;
+                }
+            }
+        }
+
+        console.log("There is no product with given id in warehouse list");
+    };
+
+    addProduct(product, quantity) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (product.id === this.list[i].product.id) {
+                console.log("Product with given id is already in warehouse list");
+                return;
+            }
+        }
+
+        let productQuantity = new ProductQuantity(product, quantity);
+
+        this.list.push(productQuantity);
+    };
+
+    modifyProduct(id, product, quantity) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (id === this.list[i].product.id) {
+                this.list[i].product = product;
+                this.list[i].quantity = quantity;
+                console.log("Changes has been made successfully");
+                return;
+            }
+        }
+
+        console.log("There is no product with given id in warehouse list");
+    };
+
+    getProduct(id, quantity) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (id === this.list[i].product.id) {
+                if (this.list[i].quantity >= quantity) {
+                    let gottenProduct = new ProductQuantity(this.list[i].product, this.list[i].quantity);
+                    this.list[i].quantity -= quantity;
+
+                    return gottenProduct;
+                } else {
+                    console.log("There is no product quantity needed");
+                    return;
+                }
+            }
+        }
+
+        console.log("There is no product with given id in warehouse list");
     }
 }
 
@@ -167,3 +242,27 @@ shop.logAll();
 
 shop.addProduct(1, "Smartfon", "Samsung S20", 2020, 2500, 0.1);
 shop.logAll();
+
+/////////////////////////////////////////
+console.log("\n\n");
+/////////////////////////////////////////
+
+let warehouse = new Warehouse();
+warehouse.logAll();
+
+warehouse.addProduct(product, 5);
+warehouse.logAll();
+warehouse.log(1);
+
+warehouse.getProduct(1, 2);
+warehouse.logAll();
+warehouse.log(1);
+
+warehouse.getProduct(1, 4);
+warehouse.logAll();
+warehouse.log(1);
+
+warehouse.getProduct(0, 2);
+warehouse.logAll();
+warehouse.log(1);
+
