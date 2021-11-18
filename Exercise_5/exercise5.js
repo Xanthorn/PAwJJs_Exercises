@@ -78,8 +78,8 @@ function headerClick(headerId) {
     let paragraphs = document.getElementsByTagName("p");
     let index;
 
-    for(let i = 0; i < headers.length; i++) {
-        if(headers[i].id === headerId) {
+    for (let i = 0; i < headers.length; i++) {
+        if (headers[i].id === headerId) {
             index = i;
             break;
         }
@@ -87,7 +87,36 @@ function headerClick(headerId) {
 
     if (paragraphs[index].style.display === "none") {
         paragraphs[index].style.display = "block";
-      } else {
+    } else {
         paragraphs[index].style.display = "none";
-      }
+    }
+}
+
+function addParagraph() {
+    let paragraphName = document.getElementById("paragraphName");
+    let paragraphs = document.getElementsByTagName("p");
+    let paragraphsQuantity = paragraphs.length;
+    let divParagraph = document.getElementById("paragraphs");
+
+    if (paragraphName.value.length > 0) {
+        let newHeader = document.createElement("h2");
+        newHeader.id = `header-${paragraphsQuantity}`;
+        newHeader.onclick = function () { headerClick(newHeader.id) };
+        newHeader.innerHTML = `Nagłówek ${paragraphsQuantity}`;
+        divParagraph.appendChild(newHeader);
+
+        let newParagraph = document.createElement("p");
+        newParagraph.id = `paragraph-${paragraphsQuantity}`;
+        newParagraph.onclick = function () { paragraphClick(newParagraph.id) };
+        newParagraph.innerHTML = `${paragraphName.value}`;
+
+        let colorIndex = Math.floor(Math.random() * (max - min + 1)) + min;
+        newParagraph.style.color = textColors[colorIndex];
+
+        newParagraph.title = `Długość paragrafu: ${newParagraph.innerHTML.length}`;
+
+        divParagraph.appendChild(newParagraph);
+    } else {
+        console.log("Podaj tekst dla nowego paragrafu");
+    }
 }
