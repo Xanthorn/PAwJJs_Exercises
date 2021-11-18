@@ -72,3 +72,22 @@ function paragraphClick(paragraphId) {
         }
     }
 }
+
+function headerClick(headerId) {
+    let headers = document.getElementsByTagName("h2");
+    let paragraphs = document.getElementsByTagName("p");
+    let index;
+
+    for(let i = 0; i < headers.length; i++) {
+        if(headers[i].id === headerId) {
+            index = i;
+            break;
+        }
+    }
+
+    if (paragraphs[index].style.display === "none") {
+        paragraphs[index].style.display = "block";
+      } else {
+        paragraphs[index].style.display = "none";
+      }
+}
